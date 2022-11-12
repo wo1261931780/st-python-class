@@ -30,12 +30,14 @@ class Movie:
 
 def main():
     movies = []
+    Directors = []
     with open("movies.txt", encoding="utf-8") as f:
         for line in f:
             print("我是读取的数据：", line)
             title, genre, director, studio, year = line.split(";")
             print("我是分割后的数据：", title, genre, director, studio, year)
             d = Director(director.split(":")[1])
+            Directors.append(d)
             print("我是导演对象：", d.name)
             m = Movie(title.split(":")[1], genre.split(":")[1], d, studio.split(":")[1], year.split(":")[1])
             print("我是电影对象：", m.title, m.genre, m.director, m.studio, m.year)
