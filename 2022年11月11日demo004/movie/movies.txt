@@ -1,9 +1,1 @@
-{
-[
-Title:Iron Man;
-Genre:Action;
-Director:Jon Favreau;
-Studio:Marvel Comics;
-Year:2008;
-],
-}
+Title:Iron Man;Genre:Action;Director:Jon Favreau;Studio:Marvel Comics;Year:2008
