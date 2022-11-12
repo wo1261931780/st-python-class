@@ -1,6 +1,7 @@
-import XMLGererator
+import json
 
-class Director:
+
+class Director2:
     def __init__(self, name):
         self.name = name
 
@@ -61,19 +62,36 @@ def main():
                 Directors = []
                 names = str(director_temporary).split(",")
                 for i in names:
-                    director_demo = Director(i)
+                    director_demo = dict(Name=i)
                     Directors.append(director_demo)
                 m = Movie(title.split("Title:")[1], genre.split(":")[1], Directors, studio.split(":")[1],
                           year.split(":")[1])
             else:
-                d = Director(director_temporary)
-                m = Movie(title.split("Title:")[1], genre.split(":")[1], d, studio.split(":")[1], year.split(":")[1])
+                # d = Director2(director_temporary)
+                Directors2 = dict(Name=director_temporary)
+                m = Movie(title.split("Title:")[1], genre.split(":")[1], Directors2, studio.split(":")[1],
+                          year.split(":")[1])
             movies.append(m)
     # 打印当前的电影列表，排序
     movies.sort(key=lambda movie: movie.title)
+    # for m in movies:
+    #     m.show_me_json_info()
+    # 添加一个固定格式的字典，然后将其转换为json格式
+    movie_list = []  # 创建一个空列表，保存所有电影的信息
     for m in movies:
-        m.show_me_json_info()
-
+        movie_dict = dict()  # 创建一个空字典，保存单个电影的信息
+        movie_dict["title"] = m.title
+        movie_dict["genre"] = m.genre
+        movie_dict["director"] = m.director
+        movie_dict["studio"] = m.studio
+        movie_dict["year"] = m.year
+        print(movie_dict)
+        print(type(movie_dict))
+        movie_list.append(movie_dict)  # 添加到列表中
+        # 将字典转换为json格式
+        movies_json = json.dumps(movie_dict, ensure_ascii=False)
+        print(movies_json)
+        print(type(movies_json))
     f.close()
 
 
