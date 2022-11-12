@@ -23,11 +23,11 @@ class Movie:
                                                                                           self.year))
 
     def show_me_json_info(self):
-        print("{" + "\"Movie:[")
+        print("{" + "\"Movie\":[")
         print("{" + "\"title\":" + "\"" + self.title + "\"},")
         print("{" + "\"genre\":" + "\"" + self.genre + "\"},")
         # print("\"director\":" + "\"" + self.director + "\",")
-        print("{" + "\"Director:[")
+        print("{" + "\"Director\":[")
         if type(self.director) == list:
             for i in self.director:
                 i.show_me_json_info()
