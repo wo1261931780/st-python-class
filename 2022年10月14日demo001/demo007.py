@@ -1,5 +1,5 @@
 data = []
-sum = 0
+sum1 = 0
 n = 0
 with open("demo007.txt") as f:
     data = f.readlines()
@@ -7,10 +7,10 @@ with open("demo007.txt") as f:
     # 这里的是逐行读取，因为后面有s，所以是读取多行数据
     # ['1\n', '1\n', '2\n', '1\n', '31\n', '32\n', '132\n', '1\n', '3']
     for d in data:
-        if (d):
-            sum = sum + int(d)
+        if d:
+            sum1 = sum1 + int(d)
             n += 1
             print("当前行的数据：" + str(d))
 f.close()
-average = sum / n
+average = sum1 / n
 print("我是平均数据：" + str(average))
