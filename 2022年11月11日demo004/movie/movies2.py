@@ -28,11 +28,15 @@ class Movie:
         print("{" + "\"genre\":" + "\"" + self.genre + "\"},")
         # print("\"director\":" + "\"" + self.director + "\",")
         print("{" + "\"Director:[")
-        for i in self.director:
-            i.show_me_json_info()
+        if type(self.director) == list:
+            for i in self.director:
+                i.show_me_json_info()
+        else:
+            self.director.show_me_json_info()
         print("]},")
         print("{" + "\"studio\":" + "\"" + self.studio + "\"},")
-        print("{" + "\"year\":" + "\"" + self.year + "\"},")
+        print("{" + "\"year\":" + self.year + "},")
+        print("]},")
 
 
 # 定义一个函数去读取文本数据
