@@ -85,13 +85,23 @@ def main():
         movie_dict["director"] = m.director
         movie_dict["studio"] = m.studio
         movie_dict["year"] = m.year
-        print(movie_dict)
-        print(type(movie_dict))
         movie_list.append(movie_dict)  # 添加到列表中
         # 将字典转换为json格式
         movies_json = json.dumps(movie_dict, ensure_ascii=False)
         print(movies_json)
-        print(type(movies_json))
+    # ----------------------------------------
+    movie_inspect_list = []
+    for i in movie_list:
+        movie_inspect = dict(Movie=i)
+        movie_inspect_list.append(movie_inspect)
+    movies_final = dict(Movies=movie_inspect_list)
+    print(movies_final)  # 打印最终的字典
+    # ----------------------------------------
+
+    with open("C:\\Users\\64234\PycharmProjects\\st-python-class.github.io\\2022年11月11日demo004\movie\\result.json",
+              "w") as f:
+        json.dump(movies_final, f)
+        print("加载入文件完成...")
     f.close()
 
 
