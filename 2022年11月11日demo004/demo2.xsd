@@ -1,0 +1,50 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://venus.sod.asu.edu/WSRepository/xml"
+            targetNamespace="http://venus.sod.asu.edu/WSRepository/xml" elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">Distributed Software Development Course Example</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="Courses" type="CoursesType"/>
+	<xsd:complexType name="CoursesType">
+		<xsd:sequence>
+			<xsd:element name="Course" type="CourseDetails" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CourseDetails">
+		<xsd:sequence>
+			<xsd:element name="Code" type="CodeType" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Instructor" type="InstructorDetails" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Room" type=" xsd:string " minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cap" type="xsd:positiveInteger" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CodeType">
+		<xsd:attribute name="Graduate" type="xsd:string" use="optional"/>
+		<xsd:attribute name="Undergrad" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="InstructorDetails">
+		<xsd:sequence>
+			<xsd:element name="Name" type="NameType" minOccurs="1" maxOccurs="3"/>
+			<xsd:element name="Contact" type="ContactType" minOccurs="1" maxOccurs="3"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NameType">
+		<xsd:sequence>
+			<xsd:element name="First" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Last" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactType">
+		<xsd:sequence>
+			<xsd:element name="Phone" type="PhoneType" minOccurs="0" maxOccurs="2"/>
+		</xsd:sequence>
+		<xsd:attribute name="Office" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<!--  Define the allowed format for the Phone number with a regular exp.  -->
+	<xsd:simpleType name="PhoneType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d{3}\-\d{3} \d{4}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

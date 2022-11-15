@@ -1,0 +1,10 @@
+Title:Iron Man;Genre:Action;Director:Jon Favreau,11;Studio:Marvel Comics;Year:2008
+Title:Due Date;Genre:Comedy,Drama;Director:Todd Phillips;Studio:Warner Bros;Year:2010
+Title:Iron Man2;Genre:Adventure;Director:Jon Favreau;Studio:Marvel Comics;Year:2010
+Title:The Avengers;Genre:Action,Adventure;Director:Joss Whedon;Studio:Marvel Comics;Year:2012
+Title:Doctor Strange;Genre:Fantasy;Director:Scott Derrickson;Studio:Marvel Comics;Year:2016
+Title:Wind River;Genre:Crime,Mystery;Director:Taylor Sheridan;Studio:Marvel Comics;Year:2017
+Title:Oldboy;Genre:Mystery;Director:Spike Lee;Studio:Marvel Comics;Year:2013
+Title:Iron Man Three;Genre:Action;Director:Shane Black;Studio:Marvel Comics;Year:2013
+Title:Avengers: Age of Ultron;Genre:Adventure;Director:Joss Whedon;Studio:Marvel Comics;Year:2015
+Title:Avengers: Infinity War;Genre:Adventure;Director:Anthony Russo,Joe Russo;Studio:Marvel Comics;Year:2018

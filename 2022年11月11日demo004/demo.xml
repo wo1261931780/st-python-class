@@ -1,0 +1,48 @@
+<Courses xmlns="http://venus.sod.asu.edu/WSRepository/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://venus.sod.asu.edu/WSRepository/xml Courses.xsd">
+	<Course>
+		<Code Undergrad="CSE240"/>
+		<Name>Introduction to Programming Languages</Name>
+		<Instructor>
+			<Name>
+				<First>Calvin</First>
+				<Last>Cheng</Last>
+			</Name>
+			<Contact>
+				<Phone>480-965 1111</Phone>
+			</Contact>
+		</Instructor>
+		<Room>BYAC110</Room>
+		<cap>82</cap>
+	</Course>
+	<Course>
+		<Code Undergrad="CSE445" Graduate="CSE598"/>
+		<Name>Distributed Software Development</Name>
+		<Instructor>
+			<Name>
+				<First>Yinong</First>
+				<Last>Chen</Last>
+			</Name>
+			<Contact Office="BYENG414">
+				<Phone>480-965 2769</Phone>
+			</Contact>
+		</Instructor>
+		<Room>BYAC210</Room>
+		<cap>57</cap>
+	</Course>
+	<Course>
+		<Code Undergrad="CSE360"/>
+		<Name>Software Engineering</Name>
+		<Instructor>
+			<Name>
+				<First>James</First>
+				<Last>Collofello</Last>
+			</Name>
+			<Contact>
+				<Phone>480-965 0000</Phone>
+			</Contact>
+		</Instructor>
+		<Room>BYAC270</Room>
+		<cap>65</cap>
+	</Course>
+</Courses>
