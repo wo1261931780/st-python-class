@@ -1,0 +1,50 @@
+#!/bin/bash
+apt-get update
+apt-get install build-essential libssl-dev linux-headers-$(uname -r)
+apt-get install graphviz autoconf automake bzip2 debhelper dh-autoreconf
+libssl-dev libtool openssl python-all python-qt4 python-twisted-conch python-zope.interface python-six dkms module-assistant ipsec-tools racoon libc6-dev module-init-tools netbase libpython2.7-stdlib uuid-runtime
+apt-get install libssl-dev
+apt-get install openssl
+apt-get install libcap-ng-utils
+apt-get install libcap-ng-dev
+apt-get install libtool
+apt-get install autoconf
+apt-get update
+apt-get install unbound
+apt-get update
+apt-get install python-tftpy
+apt-get update
+apt-get install python3-pyftpdlib
+apt install openvswitch-switch
+mkdir -p /usr/local/etc/openvswitch # 为 OVS 数据库和模式创建目录
+ovsdb-tool create /usr/local/etc/openvswitch/conf.db
+vswitchd/vswitch.ovsschema # 使用 ovsdb-tool 初始化配置数据库
+mkdir -p /usr/local/var/run/openvswitch
+ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock
+--remote=db:Open_vSwitch,Open_vSwitch,manager_options
+--private-key=db:Open_vSwitch,SSL,private_key
+--certificate=db:Open_vSwitch,SSL,certificate
+--bootstrap-ca-cert=db:Open_vSwitch,SSL,ca_cert --pidfile --detach
+--log-file
+ovs-vsctl --no-wait init
+ovs-vsctl add-br br0 # 将一个新	网桥添加到 br0 中
+ovs-vsctl add-br br1 # 将一个新	网桥添加到 br1 中
+ovs-vsctl show       # 显示我们的新虚拟交换机
+ifconfig br0 up      #打开端口 br0，与网桥 br1 相同
+ifconfig             #显示 br0 的接口
+ovs-vsctl del-br br1 #根据需要删除网桥
+ovs-vsctl add-br br0 # 将一个新网桥添加到 br0 中
+ifconfig br0 up
+ovs-vsctl add-port br0 enp0s3 #将 br0 连接到外部网络接口，例如 enp0s3，eth0，可能连接到互联网
+ovs-vsctl show
+ping 8.8.8.8                                                # 对 google 服务器进行 ping 操作以测试连通性
+ifconfig enp0s3 0                                           # 删除 enp0s3 IP 地址
+ifconfig br0 10.0.2.33                                      # 将静态 IP 地址分配到 br0
+ovs-vsctl set bridge br0 other-config:hwaddr= MAC of enp0s3 # 仅在 ThoTh 实验室中需要此命令
+route add default gw 10.0.2.1 dev br0                       # 将默认的 gw 更改为 br0
+ovs-vsctl del-br br0                                        # 删除 OVS 网桥
+ifconfig enp0s3                                             # 重新分配以太网接口的 IP 地址
+route add default gw 10.0.2.1 enp0s3                        # 将 enp0s3 添加到路由表
+#可以通过开放vSwitch命令正确显示创建的网桥
+ovs-vsctl show
+route -n

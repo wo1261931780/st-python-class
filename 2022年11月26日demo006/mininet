@@ -1,0 +1,44 @@
+#!/bin/bash
+mn --version             # 检查是否已安装 mininet。如果未安装，请执行下一个命令
+sudo apt install mininet # 从发行版中安装 {mininet
+sudo mn --test pingall
+sudo mn --topo=single,3
+mininet >exit
+sudo mn -c
+sudo mn --topo=single,3
+sudo mn --topo=linear,4
+sudo mn --topo tree,depth=2,fanout=3
+sudo mn -h
+sudo mn
+sudo mn --topo=linear,4
+mininet >nodes
+mininet >iperf
+mininet >net
+mininet >h1 ifconfig -a
+mininet >h1 ping h2       # h1 可以对 h2 进行 ping 操作，使用键序列 Ctrl-C 停止连续 ping
+mininet >h1 ping -c 10 h2 #从 h1 向 h2 发送 10 个 ping
+mininet >s1 ifconfig -a
+mininet >h1 arp
+mininet >s1 arp
+mininet >h1 route
+mininet >s1 route
+mininet >exit
+mininet >sudo mn -c
+sudo mn --link tc,bw=10, delay=10ms
+mininet> link s1 h1 down
+sudo mn -x
+Host1> ping 10.0.0.2
+sudo mn --switch ovsk --test iperf
+mininet> py ’hello ’ + ’world’
+mininet> py locals()
+mininet> py dir()
+mininet> py help(h1)
+mininet> py h1.IP()
+sudo mn --topo single,4
+sudo mn --topo=linear,5
+mininet> nodes
+#可用节点为：
+#c0 h1 h2 h3 h4 s1
+mininet> iperf
+mininet> iperf
+mininet> h1 ping -c 2 h64
