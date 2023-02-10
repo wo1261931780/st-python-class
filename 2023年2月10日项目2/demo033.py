@@ -1,6 +1,36 @@
 import json
 
 
+# 首先分析一下对象的结构：
+# 一个movie就是一个对象
+# 一个movie中可以允许多个导演对象同时存在
+# 一个导演内部又分别有不同的属性
+
+# 整体的结构是：
+#     movie对象
+#         title片名属性+genre类型属性+studio制片厂属性+year年份属性+list<Director>导演列表属性
+#     director
+#         name姓名属性
+
+# ========================================================
+# 需求分析：
+# 1.创建一个Movies.txt文件
+# 2.文件中包含至少四种不同电影类型（题材）的至少 10 部电影
+# 题材举例：动作(action)、动画(animation)、喜剧(comedy)、剧情(drama)、虚构(fiction)、恐怖(horror)
+# 3.文件必须包含movie对象中的所有属性
+# 4.所有电影片名都必须不同，以此为键对movie对象完成排序
+# 5.以将文件放在程序的本地目录中
+# 6.写一个python程序，能直接读取上面文件中的数据
+# 7.读取完成后，生成 JSON 数据结构
+# 8.字典结构存储 JSON 结构，结构必须和上面的要求一致
+# 9.添加 Sort 函数,对名称排序
+# 10.将排序后的json保存
+# 11.添加 XmlGeneration 函数
+# 12.读取排序后的json数据,将其生成xml树
+# 13.XML 文件的根元素是”Movies”
+# 14.将 XML 树保存至名为“Movies.xml”的文件中
+# ========================================================
+
 class Movie:
     def __init__(self, title, genre, director, studio, year):
         self.title = title
@@ -9,26 +39,15 @@ class Movie:
         self.studio = studio
         self.year = year
 
-    def show_info(self):  # 简单看一下基本信息
-        print("this movie 《{}》,genre -- {},director -- {},studio -- {},year -- {}".format(self.title, self.genre,
-                                                                                          self.director, self.studio,
-                                                                                          self.year))
+    def print_movie(self):
+        print("《{", self.title, "}》,genre : ", self.genre, ",director : ", self.director, ",studio : ",
+              self.studio, ",year : ", self.year, "。")
 
-
-# 定义一个函数去读取文本数据
-# 定义一个电影对象,属性就是名称,类型,导演,制片厂,年份
-# 定义一个导演对象,包括姓名
-# 电影对象中的导演是list类型的对象列表
-# 然后使用分隔符,将其分开存到不同的属性中
-
-# 最后输出的时候,使用遍历,将其拼接到一起
-
-# 2022年11月12日17:16:38，json输出已经完成，项目说明中给出的json格式是有问题的
 
 def main():
     movies = []
-    with open("movies.txt", encoding="utf-8") as f:
-        for line in f:
+    with open("movies_json.txt", encoding="utf-8") as read_file:
+        for line in read_file:
             title, genre, director, studio, year = line.split(";")  # 分割字符串
             director_temporary = director.split("Director:")[1]  # 分割字符串，保留需要的信息
             # 判断是否有多个导演
@@ -38,7 +57,8 @@ def main():
                 for i in names:
                     director_demo = dict(Name=i)
                     multiple_director.append(director_demo)
-                m = Movie(title.split("Title:")[1], genre.split(":")[1], multiple_director, studio.split(":")[1],
+                m = Movie(title.split("Title:")[1], genre.split(":")[1], multiple_director,
+                          studio.split(":")[1],
                           year.split(":")[1])
             else:
                 single_director = dict(Name=director_temporary)
@@ -69,11 +89,12 @@ def main():
     print(movies_collection)  # 打印最终的字典
     # --------------------------------------------------------------------------------
 
-    with open("C:\\Users\\junw\\Documents\\GitHub\\st-python-class.github.io\\2022年11月11日demo004\\movie\\result.json",
-              "w") as f:
-        json.dump(movies_collection, f)
+    with open(
+            "/2023年2月10日项目2/Movies.json",
+            "w") as read_file:
+        json.dump(movies_collection, read_file)
         print("加载入文件完成...")
-    f.close()
+    read_file.close()
 
 
 if __name__ == '__main__':
