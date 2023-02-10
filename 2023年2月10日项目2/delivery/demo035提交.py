@@ -21,7 +21,7 @@ class Movie:
 
 def main():
     movies = []
-    with open("movies_origin.txt", encoding="utf-8") as dict2json:
+    with open("Movies.txt", encoding="utf-8") as dict2json:
         for line in dict2json:
             # print(line)
             # Title:Oldboy;Genre:Mystery;Director:Spike Lee,Joe Russo;Studio:Marvel Comics;Year:2013
@@ -61,7 +61,7 @@ def main():
     print(movies_collection)  # 打印结果
     # --------------------------------------------------------------------------------
     with open(
-            "C:\\Users\\junw\\Documents\\GitHub\\st-python-class.github.io\\2023年2月10日项目2\\Movies.json",
+            "Movies.json",
             "w") as dict2json:
         json.dump(movies_collection, dict2json)
     print("将字典传输到文件...")
@@ -87,6 +87,6 @@ if __name__ == '__main__':
     # 执行代码
     main()
     # 如果在本地运行，需要修改对应的路径，否则可能报错
-    json = "C:\\Users\\junw\\Documents\\GitHub\\st-python-class.github.io\\2023年2月10日项目2\\Movies.json"
-    xml = "C:\\Users\\junw\\Documents\\GitHub\\st-python-class.github.io\\2023年2月10日项目2\\Movies.xml"
+    json = "Movies.json"
+    xml = "Movies.xml"
     json2xml(json, xml)
