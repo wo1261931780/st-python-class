@@ -11,7 +11,7 @@ teachers = soup.select('.teacher-list li')
 
 print(teachers)
 
-with open('demo.txt', 'w', encoding='utf-8') as f:
+with open('demo20230324.txt', 'w', encoding='utf-8') as f:
 	for teacher in teachers:
 		name = teacher.select_one('h3').text.strip()
 		title = teacher.select_one('.teacher-title').text.strip()
