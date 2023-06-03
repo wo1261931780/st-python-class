@@ -5,6 +5,7 @@
 import pandas
 
 import matplotlib.pyplot as plt
+from pandas.plotting import parallel_coordinates
 
 from statsmodels.graphics.mosaicplot import mosaic
 
@@ -30,7 +31,7 @@ import pandas
 
 import matplotlib.pyplot as plt
 
-from pandas.plotting import mosaic
+# from pandas.plotting import mosaic
 
 # 这三行代码的目的与用于马赛克图时的目的相同。需要注意的是，平行坐标图功能是内置在pandas库中，而不是statsmodels库中。
 # 代码：
@@ -40,29 +41,28 @@ df = pandas.read_csv('cereals_num.csv', sep=",")
 # 在这个数据集中，我们已将谷物数据筛选并缩减为三种特征：蛋白质、脂肪和碳水化合物，以便最大程度地让绘图的结果容易阅读。
 # 假使我们使用超过这三种特征，将会导致图表拥挤且难以阅读。
 
-
 # 代码：
-parallel_coordinates(data, 'Cereal')
+# parallel_coordinates(data, 'Cereal')
 
-plt.gca().legend_.remove()
+# plt.gca().legend_.remove()
 
-plt.show()
+# plt.show()
 
 # 同样，图形在第一行中被绘制，并在最后一行中显示在Notebook中。
 # 第二行代码会删除图形中的图例，因为在这个示例中显示所有谷物类型的图例没有太大意义。
 # 在此示例中，绘图的目的是显示谷物成分的整体趋势。
 # 不过对于平行坐标图来说，省略图例并不是必要的。假使我们只有少量数据实例需要绘制，图例可能会很有用。
 
-
 # 第3部分：像素图
 # 代码：
 import numpy as np
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 import matplotlib.cm as cm
 
-# 与其他两个图表一样，我们导入程序库以帮助绘制图形。在这里，色图指示图cm用于指定配色方案。此外，我们还使用numpy（而不是pandas）来处理数据。
+# 与其他两个图表一样，我们导入程序库以帮助绘制图形。在这里，色图指示图cm用于指定配色方案。
+# 此外，我们还使用numpy（而不是pandas）来处理数据。
 # 代码：
 inData = np.loadtxt('cereals_normed.csv', delimiter=',', dtype=float, skiprows=1)
 
