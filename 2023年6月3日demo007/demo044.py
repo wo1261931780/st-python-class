@@ -42,11 +42,11 @@ df = pandas.read_csv('cereals_num.csv', sep=",")
 # 假使我们使用超过这三种特征，将会导致图表拥挤且难以阅读。
 
 # 代码：
-# parallel_coordinates(data, 'Cereal')
+parallel_coordinates(df, 'Cereal')
 
-# plt.gca().legend_.remove()
+plt.gca().legend_.remove()
 
-# plt.show()
+plt.show()
 
 # 同样，图形在第一行中被绘制，并在最后一行中显示在Notebook中。
 # 第二行代码会删除图形中的图例，因为在这个示例中显示所有谷物类型的图例没有太大意义。
@@ -105,12 +105,13 @@ plt.show()
 # 代码：
 from wordcloud import WordCloud
 
+
 import matplotlib.pyplot as plt
 
 # 和前面一样，这些行导入所需的库。因为Wordless使用文本数据而不是数值数据，因此pandas库在此处没有用处。
 # 另一方面，wordcloud库包含成功绘制Wordle所需的许多功能。
 # 代码：
-text = open('kjb.txt').read()
+text = open('kjv.txt').read()
 
 # 此行阅读在线免费提供的钦定版《圣经》的文本。钦定版《圣经》通常用作文本分析技术的样本文本。
 # 代码：
