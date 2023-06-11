@@ -2,11 +2,17 @@
 # 为了减轻他们的压力，他们要求你创建一个此游乐项目总参入量的控制图。
 # 使用提供的数据，创建一个控制图，以显示参入量、平均值以及一到两个标准差的标准差带。
 # 下面是SQL：
-# select count(*) as count,substr(timestamp, 0, 14)
+# select *
+# from attraction
+# where name = 'Atmosfear';
+# 需要使用sequence中的所有数据
+# 得到两列数据，一列是时间，一列是参入量
+# select substr(timestamp, 0, 14) as timestamp, count(*) as count
 # from checkin
 # where attraction = 8
-#   and type = 'actual' group by substr(timestamp, 0, 14)
-# order by timestamp
+#   and type = 'actual'
+# group by substr(timestamp, 0, 14)
+# order by timestamp;
 
 import sqlite3
 import matplotlib.pyplot as plt
@@ -25,6 +31,7 @@ counts = c.fetchall()
 # print(counts)
 
 import pandas as pd
+# 将上面sql得到的数据导出为csv文件
 
 data = np.genfromtxt('demo048.csv', delimiter=',', skip_header=1)
 
@@ -45,13 +52,13 @@ plt.show()
 # 在此情况下，他们要求你针对移动平均窗口的大小使用 50 个样本。
 # 获得移动平均数
 window_size = 50
-counts = data['count']
+# counts = list(data['count'])
 plt.plot(np.convolve(temps, np.ones(window_size) / window_size, 'same'))
 plt.show()
 
 # 3：为了提供有关图表的选项，游乐园管理员还要求你提供一个包含 50 个样本的移动平均窗口，
 # 其中通过相同的“Atmosfear”参入量数据使用指数加权（即指数加权移动平均值）计算平均值。
-import pandas as pd
+# 为了完成此任务，你需要使用 pandas 库中的 ewm 函数。
 # 将原始数组转换为DataFrame对象
 df = pd.DataFrame({'temps': temps})
 print(df)
