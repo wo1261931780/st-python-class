@@ -19,3 +19,5 @@ with open('array.pyi', 'w') as f:
     f.write('\n')
     f.write('def array(obj: List[()]) -> None:\n')
     f.write('    ...\n')
+# usincome.plot(column='field_83', scheme='QUANTILES', k=5, cmap='OrRd', legend=True)
+# plt.show()
