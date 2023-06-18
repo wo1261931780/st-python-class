@@ -1,10 +1,7 @@
 # 数据与提示
 # Pysal包里的样例数据包括美国本土的 48 个州，您可以通过以下方式加载数据：
-
 # 除了逐个州的数据外，数据集还包含每个州的形状文件，可用于创建分区统计和比例符号地图，您可以通过以下方式加载：
-
 # 使用提供的数据，执行作业要求分析并创建所需的地图。
-#
 # 作业
 # 1：使用 PySal 数据，创建美国的分区统计图，描述 2009 年美国每个州的人均收入。
 # 你只需绘制本土48州的地块。你需要在图中显示清晰的纬度和经度。下面是代码：
@@ -12,21 +9,26 @@ import pysal as ps
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
-# from libpysal import examples
-# usincome_path = examples.get_path('usjoin.csv')
+from libpysal import examples
+
+usincome_path = examples.get_path('usjoin.csv')
 # usincome = gpd.read_file(usincome_path)
 # us48_path = examples.get_path('us48.shp')
 # us48 = gpd.read_file(us48_path)
-world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-print(gpd.datasets.available)
-world = world[(world.pop_est > 0) & (world.name == "United States of America")]
+world = gpd.read_file(usincome_path)
+# 将其保存到csv文件中：
+world.to_csv('usjoin1.csv', index=False)
+# 将第82列中的数据加和，然后除以48，得到的结果就是每个州的平均收入：
+# 读取csv文件：
+# world = pd.read_csv('result.csv')
 
-world['gdp_per_cap'] = world.gdp_md_est / world.pop_est
+# sum_ = world.Scores.sum() / 48
+
+world['gdp_per_cap'] = world.values[0:49, 82:83]
 
 world.plot(column='gdp_per_cap')
 
-plt.show()
-
+plt.show()  # 二维坐标系
 
 world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
 
@@ -65,19 +67,16 @@ plt.show()
 # 注意：同样，PySal 和 GeoPandas 库包含实用的函数来帮助你计算本题。
 import numpy as np
 from libpysal import examples
-# usincome_path = examples.get_path('usjoin.csv')
-# usincome = gpd.read_file(usincome_path)
-# us48_path = examples.get_path('us48.shp')
-# us48 = gpd.read_file(us48_path)
 import pysal.lib.io as psio
+
 f = psio.open(examples.get_path("stl_hom.txt"))
 y = np.array(f.by_row()['HR8893'])
 w = psio.open(examples.get_path('stl.gal')).read()
 from esda.moran import Moran
+
 gdf = gpd.read_file(f)
 moran = Moran(y, w)
 print(moran.I)
-
 
 # 管理注意事项
 # 为了让你的答案可以正确登记在该系统中，你必须将你的答案代码填写在每个问题对应的代码单元格内。
