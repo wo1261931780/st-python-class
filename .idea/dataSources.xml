@@ -50,5 +50,17 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="dinofunworld [3]" uuid="253e91a1-f03c-40ea-9400-022a85ea4edf">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\64234\Documents\GitHub\st-python-class\2023年6月24日demo010\dinofunworld.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+        </library>
+      </libraries>
+    </data-source>
   </component>
 </project>

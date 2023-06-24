@@ -27,11 +27,15 @@ c = conn.cursor()
 c.execute("SELECT Protein, Fat, Carbohydrates FROM cereals")
 
 results = sum(map(list, list(c.fetchall())), [])
+print(results)
 
 X = np.matrix(results).reshape(-1, 3)
+print(X)
 
-# 这三行负责从数据库收集数据，然后打包成适用于 scipy 的格式。第一行执行查询和收集每种谷物的蛋白质含量、脂肪含量和碳水化合物含量。
-# 第二行将数据从 sqlite3 返回的元组格式转换为 numpy 矩阵。第三行将矩阵转换为我们需要的正确的格式。
+# 这三行负责从数据库收集数据，然后打包成适用于 scipy 的格式。
+# 第一行执行查询和收集每种谷物的蛋白质含量、脂肪含量和碳水化合物含量。
+# 第二行将数据从 sqlite3 返回的元组格式转换为 numpy 矩阵。
+# 第三行将矩阵转换为我们需要的正确的格式。
 # 代码：
 
 links = linkage(X, 'centroid')
@@ -57,6 +61,7 @@ from scipy.cluster.vq import whiten
 
 Y = whiten(X)
 links = linkage(Y, 'centroid')
+print(links)
 
 # 透过Jupyter Notebook 维持单元格之间核(程序)状态的功能，我们可以直接从上一单元格的运算及果开始。
 # 若要将数据标准化，首先从 scipy 中导入“whiten”功能，然后将其应用到转换的数据矩阵。
