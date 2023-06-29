@@ -9,10 +9,10 @@ soup = BeautifulSoup(response.text, 'html.parser')
 professors = []
 
 for professor in soup.find_all('div', class_='teacher-info'):
-	name = professor.find('h3').text.strip()
-	title = professor.find('span').text.strip()
-	research_area = professor.find('p', class_='teacher-info-desc').text.strip()
-	professors.append({'name': name, 'title': title, 'research_area': research_area})
+    name = professor.find('h3').text.strip()
+    title = professor.find('span').text.strip()
+    research_area = professor.find('p', class_='teacher-info-desc').text.strip()
+    professors.append({'name': name, 'title': title, 'research_area': research_area})
 
 print(professors)
 
