@@ -11,7 +11,7 @@ from PicImageSearch.model import Ascii2DResponse
 proxies = None
 url = "https://tiebapic.baidu.com/forum/w%3D580%3B/sign=d2247bd3c294a4c20a23e7233ecf19d5/024f78f0f736afc37d9da5b9f619ebc4b645125c.jpg"#搜图地址
 bovw = True  # 是否使用特征检索
-api_key = "a4ab3f81009b003528f7e31aed187fa32a063f58"
+api_key = "${SAUCENAO_API_KEY}"  # TODO: Set via environment variable
 saucenao = SauceNAO(api_key=api_key)
 resp = saucenao.search(url)
 if resp.raw[0].similarity < 70:
